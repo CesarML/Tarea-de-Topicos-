@@ -1,7 +1,7 @@
 <?php
 $servername="localhost";
 $username="root";
-$password="learning1108";
+$password="mysql1234";
 $database="mensajes_ajax";
 
 $conn =  mysqli_connect($servername,$username,$password,$database);
