@@ -9,7 +9,9 @@
     $filas=mysqli_num_rows($resultado);
 
     if($filas>0){
-        header("location:../bienvenido.html");
+        session_start();
+        $_SESSION["usuario"] = $nombre;
+        header("location:../bienvenido.php");
     }
 
     else{

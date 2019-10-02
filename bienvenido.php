@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,12 +46,26 @@
                 <div id="respuesta"></div>
                 <form id="nuevo-correo" class="form-group" method="post">
                     <label for="name">Destinatario</label>
-                    <select class="browser-default custom-select mb-4" name="user" id="user">
-                        <option value="" selected disabled>Selecciona un Contacto</option>
+                    <!-- <select class="browser-default custom-select mb-4" name="user" id="user">
+                        <option value="" selected disabled>Selecciona un Contacto</option> -->
                         <?php
+
+                            include ("./php/conexion.php");
                         
+                            $nombre = $_SESSION["usuario"];
+                        
+                            $consulta = 'SELECT nombre FROM usuarios WHERE nombre <> "'.$nombre.'"';
+                            $resultado=mysqli_query($conn, $consulta);
+                            echo '<select class="browser-default custom-select mb-4" name="user" id="user">';
+                            echo '<option value="" selected disabled>Selecciona un Contacto</option>';
+                            if (mysqli_num_rows($resultado) > 0) {
+                                while($row = mysqli_fetch_assoc($resultado)) {
+                                    echo "<option value=\"".$row["nombre"]."\">".$row["nombre"]."</option>";
+                                }
+                            }
+                            mysqli_close($conn);
                         ?>
-                    </select>
+                    <!-- </select> -->
                     <label for="msg">Mensaje</label>
                     <textarea class="form-control" name="msg" id="msg" rows="5"></textarea>
                     <button class="btn btn-outline-success" id="btn-enviar" type="submit"><i class="far fa-paper-plane" id="new-icon"></i><br>Enviar Correo</button>

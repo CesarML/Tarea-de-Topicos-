@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $(document).tooltip();
     $( "#create" ).hide();
     $( "#received" ).hide();
 
