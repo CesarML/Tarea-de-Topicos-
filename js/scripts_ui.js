@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(document).tooltip();
     $( "#create" ).hide();
-    $( "#received" ).hide();
+    $( "#inbox" ).hide();
 
     $("#create-btn").click(function(){
         mostrarCreate();
@@ -13,14 +13,14 @@ $(document).ready(function() {
 
     function mostrarCreate(){
         var options = {};
-        $( "#received" ).hide();
+        $( "#inbox" ).hide();
         $( "#create" ).show( "fade", options, 500 );
     };
 
     function mostrarInbox(){
         var options = {};
         $( "#create" ).hide();
-        $( "#received" ).show( "fade", options, 500 );
+        $( "#inbox" ).show( "fade", options, 500 );
     };
 
 });

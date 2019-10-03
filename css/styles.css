@@ -117,3 +117,21 @@ button {
 .logout{
     font-size: 24px;
 }
+
+
+#tabla_inbox {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+#respuesta_inbox {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+}
+
+#respuesta_inbox .correo {
+    text-align: center;
+    display: inline-block;
+    margin: 0rem 1rem;
+}
