@@ -66,6 +66,7 @@ session_start();
                 echo '<input type="hidden" id="current_user" value="'.$_SESSION["usuario"].'">';
             ?>
             <div class="col-sm-9" id="inbox">
+<<<<<<< HEAD
                 <div id="respuesta2"></div>
                 <div class="table" id="tabla_inbox">
                     <ul id="respuesta_inbox">
@@ -87,6 +88,13 @@ session_start();
                         <img src="img/bote.png" id="bote">
                     </div>                    
                 </div> -->
+=======
+                <div class="table" id="tabla_inbox">
+                    <ul id="respuesta_inbox">
+                    </ul>
+                </div>
+                <div id="contenedor"></div>
+>>>>>>> 23d4518fc7a7d4dd3f09de57bc86598f0c1032b9
             </div>
             
         </div>
@@ -102,5 +110,8 @@ session_start();
 <script src="./js/scripts_ui.js"></script>
 <script src="./js/new_mail.js"></script>
 <script src="./js/cargar_inbox.js"></script>
+<<<<<<< HEAD
 <script src="./js/delete_correos.js"></script>
+=======
+>>>>>>> 23d4518fc7a7d4dd3f09de57bc86598f0c1032b9
 </html>

@@ -148,6 +148,7 @@ button {
     font-size: 24px;
 }
 
+<<<<<<< HEAD
 #tabla_inbox {
     display: table;
     /* Allow the centering to work */
@@ -158,15 +159,30 @@ button {
     min-width: 696px;
     list-style: none;
     padding-top: 20px;
+=======
+
+#tabla_inbox {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+#respuesta_inbox {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+>>>>>>> 23d4518fc7a7d4dd3f09de57bc86598f0c1032b9
 }
 
 #respuesta_inbox .correo {
     text-align: center;
     display: inline-block;
     margin: 0rem 1rem;
+<<<<<<< HEAD
 }
 
 #bote {
     width: 80px;
     height: 130px;
+=======
+>>>>>>> 23d4518fc7a7d4dd3f09de57bc86598f0c1032b9
 }
