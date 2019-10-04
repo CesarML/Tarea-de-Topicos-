@@ -1,26 +1,27 @@
 $(document).ready(function() {
     $(document).tooltip();
-    $( "#create" ).hide();
-    $( "#received" ).hide();
+    $("#create").hide();
+    $("#inbox").hide();
+    $("#eliminar").hide();
 
-    $("#create-btn").click(function(){
+    $("#create-btn").click(function() {
         mostrarCreate();
     });
 
-    $("#inbox-btn").click(function(){
+    $("#inbox-btn").click(function() {
         mostrarInbox();
     });
 
-    function mostrarCreate(){
+    function mostrarCreate() {
         var options = {};
-        $( "#received" ).hide();
-        $( "#create" ).show( "fade", options, 500 );
+        $("#inbox").hide();
+        $("#create").show("fade", options, 500);
     };
 
-    function mostrarInbox(){
+    function mostrarInbox() {
         var options = {};
-        $( "#create" ).hide();
-        $( "#received" ).show( "fade", options, 500 );
+        $("#create").hide();
+        $("#inbox").show("fade", options, 500);
     };
 
 });

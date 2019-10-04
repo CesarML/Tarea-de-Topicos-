@@ -10,9 +10,11 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mensajes AJAX</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="jquery-ui-1.10.2.sunny.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 </head>
 
@@ -23,7 +25,13 @@ session_start();
                 <!-- Brand/logo -->
                 <a class="navbar-brand" href="#"><img src="./img/logo.png" width="95"></img></a>
                 
+                <div class="username">
+                    <?php
+                    echo '<h1>Bienvenido '.$_SESSION["usuario"].'</h1>';                
+                    ?>
+                </div>
                 <!-- Links -->
+
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
                     <a class="nav-link" title="Cerrar Sesión" id="logout-btn" href="index.html"><i class="fas fa-sign-out-alt logout"></i></a>
@@ -46,35 +54,41 @@ session_start();
                 <div id="respuesta"></div>
                 <form id="nuevo-correo" class="form-group" method="post">
                     <label for="name">Destinatario</label>
-                    <!-- <select class="browser-default custom-select mb-4" name="user" id="user">
-                        <option value="" selected disabled>Selecciona un Contacto</option> -->
                         <?php
-
-                            include ("./php/conexion.php");
-                        
-                            $nombre = $_SESSION["usuario"];
-                        
-                            $consulta = 'SELECT nombre FROM usuarios WHERE nombre <> "'.$nombre.'"';
-                            $resultado=mysqli_query($conn, $consulta);
-                            echo '<select class="browser-default custom-select mb-4" name="user" id="user">';
-                            echo '<option value="" selected disabled>Selecciona un Contacto</option>';
-                            if (mysqli_num_rows($resultado) > 0) {
-                                while($row = mysqli_fetch_assoc($resultado)) {
-                                    echo "<option value=\"".$row["nombre"]."\">".$row["nombre"]."</option>";
-                                }
-                            }
-                            mysqli_close($conn);
+                            include ("./php/llenar_campos.php");
                         ?>
-                    <!-- </select> -->
                     <label for="msg">Mensaje</label>
-                    <textarea class="form-control" name="msg" id="msg" rows="5"></textarea>
+                    <textarea class="form-control" name="msg" id="msg" rows="5" placeholder="Escriba su mensaje aqui"></textarea>
                     <button class="btn btn-outline-success" id="btn-enviar" type="submit"><i class="far fa-paper-plane" id="new-icon"></i><br>Enviar Correo</button>
                 </form>
             </div>
-            <div class="col-sm-9" id="received">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus ullam alias nobis. A voluptatem non unde, et ab sunt vitae ducimus, iste ex debitis sed deleniti excepturi ipsam fuga!</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio pariatur necessitatibus dolor, nihil beatae at unde perferendis ipsum, itaque iure nostrum, autem tenetur facilis eum ullam sed architecto corporis? Earum?</p>
+            <?php
+                echo '<input type="hidden" id="current_user" value="'.$_SESSION["usuario"].'">';
+            ?>
+            <div class="col-sm-9" id="inbox">
+                <div id="respuesta2"></div>
+                <div class="table" id="tabla_inbox">
+                    <ul id="respuesta_inbox">
+                    </ul>                                    
+                    
+                </div>
+                <button class="btn btn-outline-danger" id="btn-eliminar"><i class="fa fa-trash" id="delete-icon"></i><br>Eliminar Correo</button>
+                <button class="btn btn-outline-warning" id="btn-eliminar2"><i class="fa fa-exclamation-circle" id="delete-icon2"></i><br>No eliminar Correo</button>
+                <br>
+
+                <div id="eliminar">
+                    <img src="img/bote.png" id="bote">                
+                </div>
+                
+                <!-- <div id="contenedor">
+
+                    <div id="eliminar">
+                        
+                        <img src="img/bote.png" id="bote">
+                    </div>                    
+                </div> -->
             </div>
+            
         </div>
     </div>
 </body>
@@ -84,6 +98,9 @@ session_start();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="jQuery-jQuery-UI-Dialog-Enhancement-Plugin-dialogextend/build/jquery.dialogextend.js"></script>
 <script src="./js/scripts_ui.js"></script>
 <script src="./js/new_mail.js"></script>
+<script src="./js/cargar_inbox.js"></script>
+<script src="./js/delete_correos.js"></script>
 </html>
